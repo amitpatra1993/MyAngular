@@ -7,14 +7,17 @@ import { StudentAddComponent } from './student/student-add.component';
 import { StudentViewComponent } from './student/student-view.component';
 import { StudentSearchComponent } from './student/student-search.component';
 import { RouterModule } from '@angular/router';
-import {Routes} from '@angular/router';
-
+import { Routes} from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { StudentService } from './service/studentservice';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const myroutes:Routes = [
-  {path:"add" , component:StudentAddComponent},
-  {path:"search" , component:StudentSearchComponent},
-  {path:"view" , component:StudentViewComponent},
-  {path:"" , component:StudentViewComponent},
+  { path:"add" , component:StudentAddComponent},
+  { path:"search" , component:StudentSearchComponent},
+  { path:"view" , component:StudentViewComponent},
+  { path:'edit/:id', component:StudentAddComponent },
+  { path:"" , component:StudentViewComponent},
 ]
 
 @NgModule({
@@ -29,9 +32,12 @@ const myroutes:Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot(myroutes)
+    RouterModule.forRoot(myroutes),
+    HttpClientModule,
+    ReactiveFormsModule
+    
   ],
-  providers: [],
+  providers: [StudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

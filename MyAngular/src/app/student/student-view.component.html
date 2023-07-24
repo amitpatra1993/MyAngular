@@ -1,1 +1,31 @@
-<p>student-view works!</p>
+<div class="container">
+  <br />
+
+  <div *ngFor="let student of students" class="row border border-dark" >
+    <div class="col-md-4">
+      <img src="" alt="student{{ student.id}}" />
+    </div>
+    <div class="col-md-6">
+      <table class="table "  >
+        <tbody>
+        <tr>
+          <th>Name</th>
+          <td>{{student.firstName + ' ' + student.lastName}}</td>
+        </tr>
+        <tr>
+          <th>Class / Section</th>
+          <td>{{student.studentClass+ ' / ' + student.section}}</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="row">
+            <button class="btn btn-primary offset-md-1 col-md-3">View</button>
+            <button class="btn btn-warning offset-md-1 col-md-3" (click)="editButtonClick(student.id)">Edit</button>
+            <button class="btn btn-danger  offset-md-1 col-md-3">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
